@@ -29,11 +29,14 @@ else {
   app.use(morgan.middleware("combined", {stream: productionLogStream}));
 }
 
+// routes
+require("./routes/index.router.js")(router);
 
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 server.listen(PORT, HOST, function (error) {
   if (!error) {
     console.log(`Server is listening on PORT ${PORT} and HOST ${HOST}`);
   }
 })
-    
