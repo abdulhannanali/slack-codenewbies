@@ -17,7 +17,7 @@ module.exports = function () {
 
   function* postOutgoing(next) {
     if (this.user && this.userDb) {
-      this.body = this.userDb;
+      this.body = this.user
     }
   }
 
@@ -42,6 +42,7 @@ module.exports = function () {
         catch(error) {
           yield next(error);
         }
+        console.log(this.userDb);
       }
       else {
         yield next;
