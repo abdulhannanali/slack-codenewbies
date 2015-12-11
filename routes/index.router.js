@@ -4,5 +4,6 @@ module.exports = function (router) {
 
   router.post("/",
     indexController.requestVerification,
-    indexController.getOutgoing);
+    indexController.userDb,
+    indexController.postOutgoing);
 }

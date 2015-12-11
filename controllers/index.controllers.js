@@ -1,9 +1,10 @@
-// var User = require("../models/user.model");
+var User = require("../models/user.model");
 
 module.exports = function () {
   function* requestVerification (next) {
     if (this.request.body &&
-        this.request.body.token == process.env.OUTGOING_TOKEN) {
+        this.request.body.token == process.env.OUTGOING_TOKEN &&
+        this.request.body.user_name.trim() != "slackbot") {
           console.log("Verified Slack Request")
           this.user = this.request.body;
           yield next;
@@ -14,27 +15,42 @@ module.exports = function () {
     }
   }
 
-  function* getOutgoing (next) {
-    if (!this.user || this.user.user_name == "100daysofcodebot") {
-      yield next;
-    }
-    else {
-      console.log("Should out go probably");
-      this.body = {text: `Welcome ${this.user.user_name}! How is your progress with 100daysofcode pledge going today`}
-    }
-
-  }
-
-  function checkPledge(user) {
-    if (user.text) {
-      return user.text.includes("!pledge");
+  function* postOutgoing(next) {
+    if (this.user && this.userDb) {
+      this.body = this.userDb;
     }
   }
 
-
+  // createUser: a middleware to create the user in the database
+  function* userDb(next) {
+      if (this.user) {
+        // finding mongodb for the user
+        try {
+          var user = yield User.findOne({username: this.user.user_name}).exec();
+          if (user) {
+            this.userDb = user;
+          }
+          else {
+            var newUser = new User({
+              username: this.user.user_name
+            })
+            yield newUser.save();
+            this.userDb = newUser;
+          }
+          yield next;
+        }
+        catch(error) {
+          yield next(error);
+        }
+      }
+      else {
+        yield next;
+      }
+  }
 
   return {
     requestVerification: requestVerification,
-    getOutgoing: getOutgoing
+    userDb: userDb,
+    postOutgoing: postOutgoing
   }
 }

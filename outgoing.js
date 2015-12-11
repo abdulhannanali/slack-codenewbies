@@ -29,6 +29,15 @@ else {
   app.use(morgan.middleware("combined", {stream: productionLogStream}));
 }
 
+mongoose.connect(process.env.MONGODB_CONNECT_URI, function (error) {
+  if (!error) {
+    console.log("Successfully connected to the database");
+  }
+  else {
+    console.error(error);
+  }
+});
+
 // routes
 require("./routes/index.router.js")(router);
 

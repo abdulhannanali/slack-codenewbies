@@ -7,15 +7,15 @@ var userSchema = new Schema({
     required: true
   },
   pledge: {
-    type: String,
-    required: true
+    type: Boolean,
+    required: true,
+    default: false
   },
   ignore: {
     type: String,
     required: true,
     default: false
-  },
-  days: [type: Number]
+  }
 })
 
 
