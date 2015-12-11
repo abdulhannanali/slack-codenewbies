@@ -17,7 +17,11 @@ module.exports = function () {
 
   function* postOutgoing(next) {
     if (this.user && this.userDb) {
-      this.body = this.user
+      if (!this.userDb.ignore) {
+        this.userDb.ignore = true;
+        yield this.userDb.save();
+        this.body = `Hey! ${this.userDb.username} pledge today for 100daysofcode challenge`
+      }
     }
   }
 
