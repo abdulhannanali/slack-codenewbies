@@ -7,24 +7,29 @@ var server = require("http").createServer(app.callback());
 
 var PORT = process.env.PORT || 3000;
 var HOST = process.env.HOST || "0.0.0.0";
+app.env = process.env.NODE_ENV || "development";
 
 app.use(bodyParser());
 
 var users = {};
 
-app.use(function *(next) {
-  console.log(this.request.body);
+console.log("NODE_ENV=" + app.env)
+if (app.env == "development") {
+  require("./config")();
+}
+
+
+// middleware for getting the user object and verifying it's the proper one
+router.post("/", function* (next) {
   var user = this.request.body;
-  if (user.text == "!pledge") {
-    if (!users[user.user_name]) {
-      users[user.user_name] = true;
-      this.body = {"text": "You are now registered for this pledge"}
-    }
-    else {
-      this.body = {"text":"You are already registered for this pledge"}
-    }
+  // checks if the request is verified
+  if (user.token == process.env.OUTGOING_TOKEN) {
+    this.user = user;
+    console.log("request verified")
   }
 })
+
+app.use(router.routes());
 
 server.listen(PORT, HOST, function (error) {
   if (!error) {
