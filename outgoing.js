@@ -11,7 +11,7 @@ var HOST = process.env.HOST || "0.0.0.0";
 app.use(bodyParser());
 
 app.use(function *(next) {
-  console.log(this.req.body);
+  console.log(this.request.body);
 })
 
 server.listen(PORT, HOST, function (error) {
