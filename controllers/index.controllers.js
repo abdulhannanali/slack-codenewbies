@@ -20,7 +20,7 @@ module.exports = function () {
   // middleware to check if the command given is right and should be accepted or not
   function* textArgsSplit(next) {
     if (this.user && this.user.text) {
-      var splitText = this.user.text.trim().split(" ");
+      var splitText = this.user.text.split(" ");
       if (splitText) {
         this.codeCommand = splitText;
       }
@@ -55,6 +55,7 @@ module.exports = function () {
   // userDb: a middleware to create the user in the database if not present already
   function* userDb(next) {
       if (this.user) {
+        console.log(this.user);
         try {
           var user = yield User.findOne({username: this.user.user_name}).exec();
           if (user) {
@@ -71,6 +72,7 @@ module.exports = function () {
           }
         }
         catch(error) {
+          console.log("error is here");
           console.error(error);
         }
         yield next;
