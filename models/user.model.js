@@ -15,9 +15,13 @@ var userSchema = new Schema({
     type: Boolean,
     required: true,
     default: false
-  }
-
-
+  },
+  daysCoded: {
+    type: Number,
+    required: true,
+    default: false
+  },
+  til: [String]
 })
 
 
