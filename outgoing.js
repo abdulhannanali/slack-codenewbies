@@ -25,8 +25,7 @@ if (app.env == "development") {
   app.use(morgan.middleware("dev"));
 }
 else {
-  var productionLogStream = fs.createWriteStream("./logs/proLog.txt", {flags: 'a'});
-  app.use(morgan.middleware("combined", {stream: productionLogStream}));
+  app.use(morgan.middleware("combined"));
 }
 
 mongoose.connect(process.env.MONGODB_CONNECT_URI, function (error) {
