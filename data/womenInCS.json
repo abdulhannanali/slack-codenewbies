@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Pamela Fox",
+    "description": "I'm a graduate from the USC Computer Science Department (BS/MS, with minors in 3d Animation + Linguistics). I'm currently living in San Francisco, California and working at Khan Academy on their computing curriculum. In my free time, I like to teach for GirlDevelopIt, give talks, work on side projects, and read great books. ☺",
+    "website": "http://www.pamelafox.org/",
+    "image": "http://i.imgur.com/zPNErsHb.jpg"
+  },
+  {
+    "name": "Ada Lovelace",
+    "description": "Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 – 27 November 1852) was a British mathematician and writer, chiefly known for her work on Charles Babbage's early mechanical general-purpose computer, the Analytical Engine. Her notes on the engine include what is recognised as the first algorithm intended to be carried out by a machine. Because of this, she is often regarded as the first computer programmer.",
+    "image": "http://i.imgur.com/ktfJrtxb.jpg",
+    "website": "https://en.wikipedia.org/wiki/Ada_Lovelace"
+  },
+  {
+    "name": "Ashley G. Williams",
+    "description": "hi my name is ashley. it's nice to meet you.\n i am an engineer/educator/organizer living in ridgewood, queens, NYC.\n i currently work as the developer community and content manager at npm, Inc. i have been working as an engineer, professionally, for about 3 years. most of my experience has been in web development, primarily in ruby, javascript, and node. i have worked with most server-side and client-side frameworks, including rails, sinatra, express, angular, ember, and backbone. \n I am also a really nice teacher and I have an awesome talk I gave at the JSConf 2015. https://www.youtube.com/watch?v=DN4yLZB1vUQ",
+    "image": "http://i.imgur.com/4fkK1SUb.jpg",
+    "website": "https://github.com/ashleygwilliams"
+  },
+  {
+    "name": "Jennifer Dewalt",
+    "description": "From April 1st, 2013 to September 27, 2013, I made one website a day, every single day as a learn to code project. Along the way, I published all my code publicly on GitHub and wrote a blog post to accompany each website. I started with just a little html and css, but by the end I was making dynamic, interactive apps using Javascript, Ruby on Rails and Node.js. \n Check out this blog post to read more about the project. \n Since I finished the 180 Websites project, I've been continuing to develop my coding skill set. Immediately after the 180 Websites project, I worked on YumHacker, a restaurant discovery website. I tackled YumHacker solo, making everything from backend to the front as well as exploring other product development issues like marketing, SEO and business relationships. YumHacker's built with a Rails API on the backend serving a Backbone front end as a single page app. \n Recently, I've been working on a side project called Zube using Node.js, MongoDB and Backbone. We're still in alpha but you can sign up on the landing page I'll let you know when we go to beta!",
+    "website": "http://jenniferdewalt.com/index.html",
+    "image": "http://i.imgur.com/y5rXvSAb.jpg"
+  }
+]

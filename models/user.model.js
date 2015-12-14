@@ -16,6 +16,7 @@ var userSchema = new Schema({
     required: true,
     default: false
   }
+
 })
 
 

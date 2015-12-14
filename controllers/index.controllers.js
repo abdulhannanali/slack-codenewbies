@@ -1,19 +1,11 @@
-var rp = require("request-promise");
-
 var User = require("../models/user.model");
-var slackIncoming = require("../lib/slackIncoming")({
-  username: "100daysofcodebot",
-  incomingWebhookUrl: process.env.INCOMING_WEBHOOK_URL,
-  icon_emoji: ":sunglasses:"
-});
-
-var botName = "slackbot";
+var codeBot = require("../lib/codeBot")();
 
 module.exports = function () {
   function* requestVerification (next) {
     if (this.request.body &&
         this.request.body.token == process.env.OUTGOING_TOKEN &&
-        this.request.body.user_name.trim() != botName) {
+        this.request.body.user_name.trim() != codeBot.name) {
           console.log("Verified Slack Request")
           this.user = this.request.body;
           yield next;
@@ -26,11 +18,10 @@ module.exports = function () {
   }
 
   // middleware to check if the command given is right and should be accepted or not
-  function* codeArgsSplit(next) {
+  function* textArgsSplit(next) {
     if (this.user && this.user.text) {
       var splitText = this.user.text.trim().split(" ");
-      if (splitText[0] == "100daysofcodebot:") {
-        // command accepted. other args can be accepted after this
+      if (splitText) {
         this.codeCommand = splitText;
       }
       yield next;
@@ -43,24 +34,22 @@ module.exports = function () {
 
   //
   function* postOutgoing(next) {
+
     // perform the operations according to the requirements of the user]
-      if (this.userDb && !this.userDb.ignore) {
+      if (this.userDb && !this.userDb.ignore && this.codeCommand[0] != codeBot.username) {
         try {
           this.userDb.ignore = true;
           yield this.userDb.save();
-          yield slackIncoming.sendMessage(`Hi @${this.userDb.username}! Sign up for 100daysofcode pledge today. \nTo signup type \n> \`\`\`100daysofcodebot: pledge signup\`\`\``, "100daysafdaofcodebot", "#testchannel");
+          codeBot.introductoryNotice(userDb);
         }
         catch (error) {
-          console.error(error);
+          codeBot.errorNotice(userDb);
         }
       }
-      else if (this.codeCommand == "help") {
-        yield helpCommand();
+      else if( this.userDb && this.codeCommand) {
+        codeBot.codeBotArgumentsParse(this.userDb, this.codeCommand);
       }
-  }
 
-  function helpCommand() {
-    return slackIncoming.sendMessage("hi! I am a 100daysofcode bot. I am here to help you in your coding journey. To sign up for pledge just type \n>\'\'\'100daysofcodebot: pledge signup\'\'\' \nIn order to signout of pledge type \'\'\'100daysofcodebot: pledge signout\'\'\' but you don't give up man!", "100daysofcode")
   }
 
   // userDb: a middleware to create the user in the database if not present already
@@ -94,7 +83,7 @@ module.exports = function () {
   return {
     requestVerification: requestVerification,
     userDb: userDb,
-    codeArgsSplit: codeArgsSplit,
+    textArgsSplit: textArgsSplit,
     postOutgoing: postOutgoing
   }
 }

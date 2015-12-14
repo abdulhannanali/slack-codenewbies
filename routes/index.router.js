@@ -4,7 +4,7 @@ module.exports = function (router) {
 
   router.post("/",
     indexController.requestVerification,
-    indexController.codeArgsSplit,
+    indexController.textArgsSplit,
     indexController.userDb,
     indexController.postOutgoing);
 }
