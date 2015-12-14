@@ -12,7 +12,7 @@ var userSchema = new Schema({
     default: false
   },
   ignore: {
-    type: String,
+    type: Boolean,
     required: true,
     default: false
   }
