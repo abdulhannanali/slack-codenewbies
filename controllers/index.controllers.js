@@ -44,10 +44,12 @@ module.exports = function () {
         }
         catch (error) {
           codeBot.errorNotice(userDb);
+          this.body = "error occured";
         }
       }
       else if( this.userDb && this.codeCommand) {
         codeBot.codeBotArgumentsParse(this.userDb, this.codeCommand);
+        this.body = "response received"
       }
 
   }
@@ -72,8 +74,8 @@ module.exports = function () {
           }
         }
         catch(error) {
-          console.log("error is here");
           console.error(error);
+          this.body = "error occured";
         }
         yield next;
       }
