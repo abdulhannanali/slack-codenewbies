@@ -16,11 +16,11 @@ var userSchema = new Schema({
     required: true,
     default: false
   },
-  daysCoded: {
-    type: Number,
-    required: true,
-    default: false
+  lastVerified: {
+    type: Date,
+    default: Date.now()
   },
+  datesCoded: [Date],
   til: [String]
 })
 
