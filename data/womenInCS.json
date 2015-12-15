@@ -22,5 +22,23 @@
     "description": "From April 1st, 2013 to September 27, 2013, I made one website a day, every single day as a learn to code project. Along the way, I published all my code publicly on GitHub and wrote a blog post to accompany each website. I started with just a little html and css, but by the end I was making dynamic, interactive apps using Javascript, Ruby on Rails and Node.js. \n Check out this blog post to read more about the project. \n Since I finished the 180 Websites project, I've been continuing to develop my coding skill set. Immediately after the 180 Websites project, I worked on YumHacker, a restaurant discovery website. I tackled YumHacker solo, making everything from backend to the front as well as exploring other product development issues like marketing, SEO and business relationships. YumHacker's built with a Rails API on the backend serving a Backbone front end as a single page app. \n Recently, I've been working on a side project called Zube using Node.js, MongoDB and Backbone. We're still in alpha but you can sign up on the landing page I'll let you know when we go to beta!",
     "website": "http://jenniferdewalt.com/index.html",
     "image": "http://i.imgur.com/y5rXvSAb.jpg"
+  },
+  {
+    "name":"Aparna Chennapragada",
+    "description": "Experienced Executive at Google, currently leading key efforts in Mobile and Android. \n Product and Engineering executive with 15+ years of success in the Internet sector across product management, people management, strategy and engineering leadership. Expertise in search, information discovery and consumer products. Love building and leading data-driven products and teams from scratch. \n Specialties: Consumer Internet, Business Strategy, Product Management, Design, Network businesses, Big Data, Public speaking, Leading cross-functional teams, Getting things done.",
+    "website": "https://www.linkedin.com/in/aparnacd",
+    "image": "http://i.imgur.com/ie6ZUBy.jpg"
+  },
+  {
+    "name":"Grace Hopper",
+    "description": "Grace Brewster Murray Hopper (December 9, 1906 – January 1, 1992), née Grace Brewster Murray, was an American computer scientist and United States Navy Rear Admiral. She was one of the first programmers of the Harvard Mark I computer in 1944, invented the first compiler for a computer programming language, and was one of those who popularized the idea of machine-independent programming languages which led to the development of COBOL, one of the first high-level programming languages. She is credited with popularizing the term \"debugging\" for fixing computer glitches (in one instance, removing a moth from a computer).",
+    "website":"https://en.wikipedia.org/wiki/Grace_Hopper",
+    "image":"http://i.imgur.com/pUYHyGP.jpg"
+  },
+  {
+    "name":"Marissa Mayer",
+    "description": "Marissa Ann Mayer is an American businesswoman with a degree in computer science, currently serving as the president and CEO of Yahoo!, a position she has held since July 2012.",
+    "website": "https://twitter.com/marissamayer",
+    "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Marissa_Mayer_May_2014_%28cropped%29.jpg/220px-Marissa_Mayer_May_2014_%28cropped%29.jpg"
   }
 ]
