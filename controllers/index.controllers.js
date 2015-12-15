@@ -65,7 +65,8 @@ module.exports = function () {
           }
           else {
             var newUser = new User({
-              username: this.user.user_name
+              username: this.user.user_name,
+              userid: this.user.user_id
             })
             yield newUser.save();
             this.userDb = newUser;

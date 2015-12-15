@@ -6,6 +6,10 @@ var userSchema = new Schema({
     type: String,
     required: true
   },
+  userid: {
+    type: String,
+    required: true
+  },
   pledge: {
     type: Boolean,
     required: true,
