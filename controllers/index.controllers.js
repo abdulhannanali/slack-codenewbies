@@ -5,6 +5,7 @@ module.exports = function () {
   function* requestVerification (next) {
     if (this.request.body &&
         this.request.body.token == process.env.OUTGOING_TOKEN &&
+        this.request.body.user_name &&
         this.request.body.user_name.trim() != codeBot.name) {
           console.log("Verified Slack Request")
           this.user = this.request.body;
@@ -47,9 +48,16 @@ module.exports = function () {
           this.body = "error occured";
         }
       }
-      else if( this.userDb && this.codeCommand) {
-        codeBot.codeBotArgumentsParse(this.userDb, this.codeCommand);
-        this.body = "response received"
+      else if(this.userDb && this.codeCommand) {
+        try {
+          codeBot.codeBotArgumentsParse(this.userDb, this.codeCommand);
+          this.body = "response received"
+        }
+        catch (error) {
+          console.error(error);
+          this.status = 500;
+          this.body = "sorry an error occured";
+        }
       }
 
   }
@@ -77,6 +85,7 @@ module.exports = function () {
         catch(error) {
           console.error(error);
           this.body = "error occured";
+          this.status = 500;
         }
         yield next;
       }
