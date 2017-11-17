@@ -1,5 +1,7 @@
 # slack-codenewbies
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/abdulhannanali/slack-codenewbies.svg)](https://greenkeeper.io/)
+
 This is a slack bot. I coded for a small but the best coding community [codebuddies.org](http://codebuddies.org).
 
 This bot consumes the following slack APIs.
